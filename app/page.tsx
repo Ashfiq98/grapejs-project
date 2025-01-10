@@ -5,7 +5,7 @@ import GrapeBuilder from "./components/GrapeBuilder";
 export default function Home() {
   return (
     <div >
-      <h1>Hello grape</h1>
+      {/* <h1>Hello grape</h1> */}
       {/* <GrapeBuilder /> */}
       <Main />
     </div>

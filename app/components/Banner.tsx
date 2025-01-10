@@ -705,27 +705,27 @@ height: 24px;
 }
 `}</style>
             <div id="iz29ek" className="gjs-grid-row">
-            <div id="ik2rdi" className="gjs-grid-column">
-                <h2 id="i83vu9" className="gjs-heading">
-                    Put here your description <br />
-                    for
-                    <span id="i7owfh" className="gjs-text-blue">
-                        this section
-                    </span>
-                </h2>
-                <div id="in201n" className="text-main-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                    <br />
+                <div id="ik2rdi" className="gjs-grid-column">
+                    <h2 id="i83vu9" className="gjs-heading">
+                        Put here your description <br />
+                        for
+                        <span id="i7owfh" className="gjs-text-blue">
+                            this section
+                        </span>
+                    </h2>
+                    <div id="in201n" className="text-main-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.
+                        <br />
+                    </div>
+                    <a id="iwgwt5" className="gjs-button">
+                        Join Waitlist
+                    </a>
                 </div>
-                <a id="iwgwt5" className="gjs-button">
-                    Join Waitlist
-                </a>
             </div>
-        </div>
 
         </div>
-       
 
-  )
+
+    )
 }
