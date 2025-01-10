@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@grapesjs/studio-sdk": "^1.0.27",
     "grapesjs": "^0.22.4",
     "grapesjs-blocks-basic": "^1.0.2",
