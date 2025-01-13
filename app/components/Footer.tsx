@@ -788,7 +788,7 @@ height: 24px;
                             </a>
                         </div>
                         <div id="i1hx7l" className="gjs-grid-column">
-                            <a id="ij7g8t" title href="##" className="gjs-link">
+                            <a id="ij7g8t" href="##" className="gjs-link">
                                 Pricing
                                 <br />
                             </a>
