@@ -93,6 +93,7 @@ const GrapeBuilder: React.FC = () => {
                     { id: 'navbar', label: 'Navbar', content: '<nav><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li></ul></nav>', category: 'Navigation' },
                 ],
             },
+            plugins: ['gjs-preset-webpage'],
         });
 
         // Cleanup editor instance on component unmount

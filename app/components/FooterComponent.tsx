@@ -1,7 +1,6 @@
 // FooterComponent.tsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Footer from './Footer';
 declare global {
     interface HTMLElement {
         _reactRoot?: import('react-dom/client').Root;
@@ -96,25 +95,218 @@ const FooterComponent = {
     </div>
     <div id="it6g1v" class="gjs-text-blue">Copyright © YEAR Company name</div>
   </div>
-</div>`,
+</div>`,    styles: `* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.gjs-grid-column {
+	flex: 1 1 0%;
+	padding: 5px 0;
+}
+
+.gjs-grid-row {
+	display: flex;
+	justify-content: flex-start;
+	align-items: stretch;
+	flex-direction: row;
+	min-height: auto;
+	padding: 10px 0;
+}
+
+.gjs-link-box {
+	color: inherit;
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+	max-width: 100%;
+	text-decoration: none;
+}
+
+.gjs-link {
+	vertical-align: top;
+	max-width: 100%;
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	transition: color 0.3s ease 0s;
+}
+
+#iau9 {
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: linear-gradient(180deg, rgba(59, 130, 245, 0.11), white 14%);
+	background-position: 0px 0px;
+	background-size: 100% 100%;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-origin: padding-box;
+	color: #475569;
+}
+
+.gjs-grid-column.feature-item {
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	min-width: 30%;
+}
+
+.gjs-grid-column.testimonial-item {
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	min-width: 45%;
+	background-color: rgba(247, 247, 247, 0.23);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	align-items: flex-start;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: rgba(0, 0, 0, 0.06);
+	border-right-color: rgba(0, 0, 0, 0.06);
+	border-bottom-color: rgba(0, 0, 0, 0.06);
+	border-left-color: rgba(0, 0, 0, 0.06);
+}
+
+#ilriti {
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+}
+
+#iv3be5 {
+	justify-content: center;
+	padding-top: 80px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 80px;
+}
+
+#im0rle {
+	flex-direction: column;
+}
+
+#iih6cv {
+	display: block;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#iotp6j {
+	align-self: center;
+}
+
+#it6g1v {
+	padding: 10px;
+	text-align: center;
+	font-size: 0.8rem;
+	margin-top: 20px;
+	opacity: 75%;
+}
+
+#ij7g8t {
+	display: block;
+}
+
+#ipjdtn {
+	display: block;
+}
+
+#ikj01e {
+	display: block;
+}
+
+#i1hx7l {
+	display: flex;
+	gap: 30px;
+	flex: 0 1 auto;
+	justify-content: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#i2sl68 {
+	display: block;
+}
+
+.gjs-text-blue {
+	color: rgb(36, 99, 235);
+}
+
+.gjs-link:hover {
+	color: rgb(36, 99, 235);
+	text-decoration: underline;
+}
+
+.gjs-icon {
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	vertical-align: middle;
+	fill: currentColor;
+	width: 50px;
+	height: 50px;
+}
+
+#ip6zoj {
+	width: 213px;
+	height: 44px;
+}
+
+.gjs-icon.gjs-feature-icon {
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	background-color: rgb(36, 99, 235);
+	color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+@media (max-width:992px) {
+	.gjs-grid-row {
+		flex-direction: column;
+	}
+}`
         },
     },
-    view: {
-        onRender(this: any) {
-            const componentEl = this.el;
-            if (!componentEl._reactRoot) {
-                const root = createRoot(componentEl);
-                componentEl._reactRoot = root;
-                root.render(React.createElement(Footer));
-            }
-        },
-        remove(this: any) {
-            if (this.el._reactRoot) {
-                this.el._reactRoot.unmount();
-            }
-            return this;
-        },
-    },
+    // view: {
+    //     onRender(this: any) {
+    //         const componentEl = this.el;
+    //         if (!componentEl._reactRoot) {
+    //             const root = createRoot(componentEl);
+    //             componentEl._reactRoot = root;
+    //             root.render(React.createElement(Footer));
+    //         }
+    //     },
+    //     remove(this: any) {
+    //         if (this.el._reactRoot) {
+    //             this.el._reactRoot.unmount();
+    //         }
+    //         return this;
+    //     },
+    // },
 };
 
 export default FooterComponent;
