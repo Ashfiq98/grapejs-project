@@ -15,52 +15,111 @@ import BannerComponent from './BannerComponent';
 import FooterComponent from './FooterComponent';
 import { grapeObj } from './Grape';
 
-// declare global {
-//   interface HTMLElement {
-//     _reactRoot?: import('react-dom/client').Root;
-//   }
-// }
 const Main = () => {
   useEffect(() => {
     const editor = grapesjs.init(grapeObj);
-   
+
+    // Initialize the HTML Edit Command
+    const pfx = editor.getConfig()?.stylePrefix || ' ';
+    const modal = editor.Modal;
+    const cmdm = editor.Commands;
+    const codeViewer = editor.CodeManager.getViewer('CodeMirror')?.clone();
+    const pnm = editor.Panels;
+
+    if (!codeViewer || !modal || !cmdm || !pnm) {
+      console.error('Required GrapesJS components are not available.');
+      return;
+    }
+
+    const container = document.createElement('div');
+    const btnEdit = document.createElement('button');
+    const btnDiscard = document.createElement('button'); // Create discard button
+
+    // Configure CodeViewer
+    codeViewer.set({
+      codeName: 'htmlmixed',
+      readOnly: 0,
+      theme: 'hopscotch',
+      autoBeautify: true,
+      autoCloseTags: true,
+      autoCloseBrackets: true,
+      lineWrapping: true,
+      styleActiveLine: true,
+      smartIndent: true,
+      indentWithTabs: true,
+    });
+
+    // Configure Edit Button
+    btnEdit.innerHTML = 'Edit';
+    btnEdit.className = `${pfx}btn-prim ${pfx}btn-import`;
+    btnEdit.onclick = function () {
+      const code = codeViewer.editor?.getValue() || '';
+      const wrapper = editor.DomComponents.getWrapper();
+      if (wrapper) {
+        wrapper.set('content', '');
+      }
+      editor.setComponents(code.trim());
+      modal.close();
+    };
+
+    // Configure Discard Button
+    btnDiscard.innerHTML = 'Discard';
+    btnDiscard.className = `${pfx}btn-prim ${pfx}btn-import`;
+    btnDiscard.onclick = function () {
+      modal.close(); // Close modal without saving
+    };
+
+    // Add Command to edit HTML
+    cmdm.add('html-edit', {
+      run: function (editor, sender) {
+        sender?.set('active', 0);
+        const viewer = codeViewer.editor;
+
+        modal.setTitle('Edit code');
+        if (!viewer) {
+          const txtarea = document.createElement('textarea');
+          container.appendChild(txtarea);
+          container.appendChild(btnEdit);
+          container.appendChild(btnDiscard); // Add discard button to modal
+          codeViewer.init(txtarea);
+        }
+
+        const InnerHtml = editor.getHtml();
+        const Css = editor.getCss();
+
+        modal.setContent('');
+        modal.setContent(container);
+        codeViewer.setContent(`${InnerHtml}<style>${Css}</style>`);
+        modal.open();
+
+        viewer?.refresh();
+      },
+    });
+
+    // Add Button to Panel
+    pnm.addButton('options', [
+      {
+        id: 'edit',
+        className: 'fa fa-edit',
+        command: 'html-edit',
+        attributes: {
+          title: 'Edit',
+        },
+      },
+    ]);
+
     const savedHtml = localStorage.getItem('grapesjs-content');
     if (savedHtml) {
       editor.setComponents(JSON.parse(savedHtml)); // Parse the JSON string
     }
 
-    // Save editor content to local storage on change
-    // editor.on('change', () => {
-    //   const components = editor.getComponents();
-    //   localStorage.setItem('grapesjs-content', JSON.stringify(components)); // Stringify the components
-    // });
-
-    // -------------------------------------------- CUSTOM components ----------------------------------------------------
-
-    // ------------Navbar----------------
-
+    // Custom Components Registration
     editor.Components.addType('navbar', NavbarComponent);
-
-    // -----------Hero section---------------
-
     editor.Components.addType('hero-section', HeroComponent);
-
-    //--------------- Feature Left------------
-
     editor.Components.addType('feature-left', FeatureLeftComponent);
-
-    //----------------Feature Grid------------
-
     editor.Components.addType('feature-grid', FeatureGridComponent);
-
-    //----------------Testimonial-------------
-
     editor.Components.addType('testimonial', TestimonialComponent);
-    //----------------Banner------------------
-
     editor.Components.addType('banner', BannerComponent);
-    //----------------Footer-----------------
-
     editor.Components.addType('footer', FooterComponent);
 
     return () => editor.destroy();
@@ -79,33 +138,3 @@ const Main = () => {
 };
 
 export default Main;
-
-
-
-// {
-//   extend: 'default',
-//   model: {
-//     defaults: {
-//       name: 'Navbar',
-//       editable: true,
-//       droppable: true,
-//       traits: [],
-//     },
-//   },
-//   view: {
-//     onRender() {
-//       const componentEl = this.el;
-//       if (!componentEl._reactRoot) {
-//         const root = createRoot(componentEl);
-//         componentEl._reactRoot = root;
-//         root.render(React.createElement(Navbar));
-//       }
-//     },
-//     remove() {
-//       if (this.el._reactRoot) {
-//         this.el._reactRoot.unmount();
-//       }
-//       return this
-//     }
-//   }
-// }

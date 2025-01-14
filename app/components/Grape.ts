@@ -2,6 +2,7 @@
 import 'grapesjs/dist/css/grapes.min.css';
 import 'grapesjs-preset-webpage';
 import 'grapesjs-blocks-basic';
+import { Editor } from 'grapesjs';
 
 export const grapeObj = {
   container: "#gjs",
@@ -83,10 +84,37 @@ export const grapeObj = {
   // panels: {defaults: []},
   plugins: ['gjs-preset-webpage'],
   pluginsOpts: {
-    'grapesjs-preset-webpage': {},
+    'grapesjs-preset-webpage': {}
+  //   // {
+  //   //   modalImportTitle: 'Import Template',
+  //   //   modalImportLabel: '<div style="margin-bottom: 10px; font-size: 13px;">Paste here your HTML/CSS and click Import</div>',
+  //   //   modalImportContent: function(editor : Editor) {
+  //   //     return editor.getHtml() + '<style>' + editor.getCss() + '</style>';
+  //   //   },
+  //   //   codeViewer: {
+  //   //     readOnly: false, // Make code editor editable
+  //   //     theme: 'material', // Optional: better theme
+  //   //     lineNumbers: true, // Optional: show line numbers
+  //   //     autoBeautify: true, // Optional: beautify code on open
+  //   //     autoCloseTags: true, // Optional: auto close tags
+  //   //     autoCloseBrackets: true, // Optional: auto close brackets
+  //   //     styleActiveLine: true, // Optional: highlight active line
+  //   //     smartIndent: true, // Optional: smart indentation
+  //   //   }
+  //   // }
+  // }
+  // codeViewer: {
+  //   readOnly: false, // Make code editor editable
+  //   theme: 'material', // Optional: better theme
+  //   lineNumbers: true, // Optional: show line numbers
+  //   autoBeautify: true, // Optional: beautify code on open
+  //   autoCloseTags: true, // Optional: auto close tags
+  //   autoCloseBrackets: true, // Optional: auto close brackets
+  //   styleActiveLine: true, // Optional: highlight active line
+  //   smartIndent: true, // Optional: smart indentation
   }
   ,
-  styleManager: 
+  styleManager:
   {
     // Add a new section for Global Settings
     sectors: [
@@ -109,46 +137,46 @@ export const grapeObj = {
         ],
       },
 
-  {
-    name: 'General',
-    open: true,
-    buildProps: ['width', 'height', 'float', 'display', 'position'],
-  },
+      {
+        name: 'General',
+        open: true,
+        buildProps: ['width', 'height', 'float', 'display', 'position'],
+      },
 
-  // Default "Typography" section
-  {
-    name: 'Typography',
-    open: true,
-    buildProps: ['font-family', 'font-size', 'font-weight', 'line-height', 'text-align', 'text-transform'],
-  },
+      // Default "Typography" section
+      {
+        name: 'Typography',
+        open: true,
+        buildProps: ['font-family', 'font-size', 'font-weight', 'line-height', 'text-align', 'text-transform'],
+      },
 
-  // Default "Decorations" section
-  {
-    name: 'Decorations',
-    open: true,
-    buildProps: ['border', 'border-radius', 'box-shadow', 'opacity'],
-  },
+      // Default "Decorations" section
+      {
+        name: 'Decorations',
+        open: true,
+        buildProps: ['border', 'border-radius', 'box-shadow', 'opacity'],
+      },
 
-  // Default "Flex" section
-  {
-    name: 'Flex',
-    open: true,
-    buildProps: ['flex-direction', 'justify-content', 'align-items', 'flex-wrap'],
-  },
+      // Default "Flex" section
+      {
+        name: 'Flex',
+        open: true,
+        buildProps: ['flex-direction', 'justify-content', 'align-items', 'flex-wrap'],
+      },
 
-  // Default "Dimension" section
-  {
-    name: 'Dimension',
-    open: true,
-    buildProps: ['width', 'height', 'max-width', 'max-height', 'min-width', 'min-height'],
-  },
+      // Default "Dimension" section
+      {
+        name: 'Dimension',
+        open: true,
+        buildProps: ['width', 'height', 'max-width', 'max-height', 'min-width', 'min-height'],
+      },
 
-  // Default "Extra" section
-  {
-    name: 'Extra',
-    open: true,
-    buildProps: ['transition', 'transform', 'perspective'],
-  },
+      // Default "Extra" section
+      {
+        name: 'Extra',
+        open: true,
+        buildProps: ['transition', 'transform', 'perspective'],
+      },
 
       // You can continue adding other sections as needed
     ],
