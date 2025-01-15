@@ -98,13 +98,7 @@ const NavbarComponent = {
   </div>
 </nav>
 `,
-            styles : `* {
-	box-sizing: border-box;
-}
-
-body {
-	margin: 0;
-}
+            styles : `
 
 .gjs-grid-column {
 	flex: 1 1 0%;

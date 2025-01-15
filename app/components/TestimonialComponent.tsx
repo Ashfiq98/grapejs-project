@@ -51,32 +51,7 @@ const TestimonialComponent = {
       </div>
     </div>
   </div>
-</div>`, styles: `* {
-	box-sizing: border-box;
-}
-
-body {
-	margin: 0;
-}
-
-.gjs-heading {
-	margin: 0;
-	color: rgba(29, 40, 55, 1);
-}
-
-.gjs-grid-column {
-	flex: 1 1 0%;
-	padding: 5px 0;
-}
-
-.gjs-grid-row {
-	display: flex;
-	justify-content: flex-start;
-	align-items: stretch;
-	flex-direction: row;
-	min-height: auto;
-	padding: 10px 0;
-}
+</div>`, styles: `
 
 .text-main-content {
 	line-height: 30px;

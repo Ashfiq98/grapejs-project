@@ -85,33 +85,6 @@ export const grapeObj = {
   plugins: ['gjs-preset-webpage'],
   pluginsOpts: {
     'grapesjs-preset-webpage': {}
-  //   // {
-  //   //   modalImportTitle: 'Import Template',
-  //   //   modalImportLabel: '<div style="margin-bottom: 10px; font-size: 13px;">Paste here your HTML/CSS and click Import</div>',
-  //   //   modalImportContent: function(editor : Editor) {
-  //   //     return editor.getHtml() + '<style>' + editor.getCss() + '</style>';
-  //   //   },
-  //   //   codeViewer: {
-  //   //     readOnly: false, // Make code editor editable
-  //   //     theme: 'material', // Optional: better theme
-  //   //     lineNumbers: true, // Optional: show line numbers
-  //   //     autoBeautify: true, // Optional: beautify code on open
-  //   //     autoCloseTags: true, // Optional: auto close tags
-  //   //     autoCloseBrackets: true, // Optional: auto close brackets
-  //   //     styleActiveLine: true, // Optional: highlight active line
-  //   //     smartIndent: true, // Optional: smart indentation
-  //   //   }
-  //   // }
-  // }
-  // codeViewer: {
-  //   readOnly: false, // Make code editor editable
-  //   theme: 'material', // Optional: better theme
-  //   lineNumbers: true, // Optional: show line numbers
-  //   autoBeautify: true, // Optional: beautify code on open
-  //   autoCloseTags: true, // Optional: auto close tags
-  //   autoCloseBrackets: true, // Optional: auto close brackets
-  //   styleActiveLine: true, // Optional: highlight active line
-  //   smartIndent: true, // Optional: smart indentation
   }
   ,
   styleManager:
@@ -125,14 +98,28 @@ export const grapeObj = {
         buildProps: ['background-color', 'color'],
         properties: [
           {
-            name: 'Primary Color',
-            property: 'primary-color',
-            type: 'color',
+            name: 'Background Color',
+            property: 'background-color',
+            type: 'select',  // Use select for a list of options
+            default: 'var(--primary-color)', // Default value from the CSS variable
+            options: [
+              { value: 'var(--primary-color)', name: 'Primary Color' },
+              { value: '#ff0000', name: 'Red' },
+              { value: '#00ff00', name: 'Green' },
+              { value: '#0000ff', name: 'Blue' },
+            ],
           },
           {
-            name: 'Secondary Color',
-            property: 'secondary-color',
-            type: 'color',
+            name: 'Color',
+            property: 'color',
+            type: 'select', // Use select for a list of options
+            default: 'var(--secondary-color)', // Default value from the CSS variable
+            options: [
+              { value: 'var(--secondary-color)', name: 'Secondary Color' },
+              { value: '#ffcc00', name: 'Yellow' },
+              { value: '#cccccc', name: 'Gray' },
+              { value: '#ffffff', name: 'White' },
+            ],
           },
         ],
       },
