@@ -155,169 +155,6 @@ const Main = () => {
   //   return () => editor.destroy();
   // }, []);
 
-
-  // useEffect(() => {
-  //   const editor = grapesjs.init(grapeObj);
-
-  //   const pfx = editor.getConfig().stylePrefix;
-  //   const modal = editor.Modal;
-  //   const cmdm = editor.Commands;
-  //   const codeViewer = editor.CodeManager.getViewer('CodeMirror').clone();
-
-  //   // Container for the code editor
-  //   const container = document.createElement('div');
-  //   const btnContainer = document.createElement('div');
-  //   const btnEdit = document.createElement('button');
-  //   const btnDiscard = document.createElement('button');
-
-  //   // Style containers
-  //   container.style.height = '90%';
-  //   container.style.width = '100%';
-
-  //   btnContainer.style.display = 'flex';
-  //   btnContainer.style.justifyContent = 'flex-end';
-  //   btnContainer.style.marginTop = '10px';
-
-  //   // Style buttons
-  //   btnEdit.innerHTML = 'Save Changes';
-  //   btnEdit.className = `${pfx}btn-prim ${pfx}btn-import`;
-  //   btnEdit.style.marginRight = '10px';
-
-  //   btnDiscard.innerHTML = 'Discard Changes';
-  //   btnDiscard.className = `${pfx}btn-prim ${pfx}btn-import`;
-
-  //   btnContainer.appendChild(btnEdit);
-  //   btnContainer.appendChild(btnDiscard);
-
-  //   // Function to format code
-  //   const formatCode = (html, css) => {
-  //     const beautifyOptions = {
-  //       indent_size: 2,
-  //       wrap_line_length: 80,
-  //       preserve_newlines: true,
-  //       jslint_happy: false,
-  //       end_with_newline: false,
-  //       space_after_anon_function: false
-  //     };
-
-  //     const formattedHtml = html_beautify(html, beautifyOptions);
-  //     const formattedCss = css_beautify(css, beautifyOptions);
-
-  //     return `${formattedHtml}\n\n<style>\n${formattedCss}\n</style>`;
-  //   };
-
-  //   // Override view-code command
-  //   cmdm.add('view-code', {
-  //     run: function (editor) {
-  //       const viewer = codeViewer.editor;
-
-  //       modal.setTitle('Code');
-
-  //       if (!viewer) {
-  //         const txtarea = document.createElement('textarea');
-  //         container.appendChild(txtarea);
-  //         container.appendChild(btnContainer);
-  //         codeViewer.init(txtarea); // Initialize CodeMirror with the textarea
-
-  //         if (!codeViewer.editor) {
-  //           console.error('CodeMirror viewer is not initialized.');
-  //           return;
-  //         }
-
-  //         // Now viewer is guaranteed to be initialized
-  //         codeViewer.editor.setOption('theme', 'dracula');
-  //         codeViewer.editor.setOption('lineNumbers', true);
-  //         codeViewer.editor.setOption('readOnly', false);
-  //         codeViewer.editor.setOption('autoCloseTags', true);
-  //         codeViewer.editor.setOption('autoCloseBrackets', true);
-  //         codeViewer.editor.setOption('styleActiveLine', true);
-  //         codeViewer.editor.setOption('smartIndent', true);
-  //         codeViewer.editor.setOption('indentUnit', 2);
-  //         codeViewer.editor.setOption('tabSize', 2);
-  //         codeViewer.editor.setOption('mode', 'htmlmixed');
-  //       }
-
-  //       // Get and format code
-  //       const htmlContent = editor.getHtml();
-  //       const cssContent = editor.getCss();
-  //       const formattedContent = formatCode(htmlContent, cssContent);
-
-  //       // Set content and open modal
-  //       modal.setContent('');
-  //       modal.setContent(container);
-  //       codeViewer.setContent(formattedContent);
-  //       modal.open();
-  //       viewer?.refresh();
-
-  // // Button handlers
-  // btnEdit.onclick = () => {
-  //   const code = codeViewer.editor.getValue(); // Get code from the editor
-
-  //   // Parse the HTML and CSS from the code
-  //   const htmlMatch = code.match(/^[\s\S]*(?=<style>)/); // Extract HTML before <style>
-  //   const cssMatch = code.match(/<style>([\s\S]*)<\/style>/); // Extract CSS inside <style> tags
-
-  //   const htmlContent = htmlMatch ? htmlMatch[0].trim() : '';
-  //   const cssContent = cssMatch ? cssMatch[1].trim() : '';
-
-  //   // Clear current components and styles
-  //   editor.DomComponents.clear(); // Clear all components
-  //   editor.CssComposer.clear(); // Clear all styles
-
-  //   // Set new components and styles
-  //   editor.setComponents(htmlContent);
-  //   editor.setStyle(cssContent);
-
-  //   modal.close(); // Close the modal
-  // };
-
-
-  // btnDiscard.onclick = () => {
-  //   modal.close();
-  // };
-  //     },
-  //   });
-  //   // Add custom commands
-  //   editor.Commands.add('save-template', {
-  //     run: function (editor) {
-  //       const html = editor.getHtml();
-  //       const css = editor.getCss();
-  //       localStorage.setItem('grapesjs-content', JSON.stringify(html));
-  //       localStorage.setItem('grapesjs-styles', JSON.stringify(css));
-  //     }
-  //   });
-
-  //   // Add preview command
-  //   editor.Commands.add('preview', {
-  //     run: function (editor) {
-  //       editor.setDevice('Desktop');
-  //       const preview = editor.getConfig().preview;
-  //       editor.stopCommand('preview');
-  //       editor.getModel().stopDefault();
-  //     },
-  //     stop: function (editor) {
-  //       editor.setDevice('Desktop');
-  //       editor.getModel().runDefault();
-  //     }
-  //   });
-  //   // Load saved content
-  //   const savedHtml = localStorage.getItem('grapesjs-content');
-  //   if (savedHtml) {
-  //     editor.setComponents(JSON.parse(savedHtml));
-  //   }
-
-  //   // Register components
-  //   editor.Components.addType('navbar', NavbarComponent);
-  //   editor.Components.addType('hero-section', HeroComponent);
-  //   editor.Components.addType('feature-left', FeatureLeftComponent);
-  //   editor.Components.addType('feature-grid', FeatureGridComponent);
-  //   editor.Components.addType('testimonial', TestimonialComponent);
-  //   editor.Components.addType('banner', BannerComponent);
-  //   editor.Components.addType('footer', FooterComponent);
-
-  //   return () => editor.destroy();
-  // }, []);
-
   useEffect(() => {
     const editor = grapesjs.init(grapeObj);
 
@@ -333,6 +170,31 @@ const Main = () => {
       console.error('Required GrapesJS components are not available.');
       return;
     }
+
+    // Define base styles
+    const baseStyles = `
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #007bff;
+  --secondary-color: #cc7f28;
+  --font-size: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}`;
+
+    // CSS formatting function
+    const formatCss = (cssContent) => {
+      const cleanCss = cssContent.replace(
+        /((:root|body|\*)\s*{[^}]*})/g,
+        ''
+      );
+      return `${baseStyles}\n\n${cleanCss.trim()}`;
+    };
 
     // Main container setup
     const container = document.createElement('div');
@@ -393,6 +255,16 @@ const Main = () => {
     htmlViewer.set({ ...viewerConfig, codeName: 'htmlmixed' });
     cssViewer.set({ ...viewerConfig, codeName: 'css' });
 
+    // Add style update listener
+    editor.on('style:update', () => {
+      if (cssViewer.editor) {
+        const cssContent = editor.getCss();
+        const formattedCss = formatCss(cssContent);
+        cssViewer.setContent(formattedCss);
+        cssViewer.editor.refresh();
+      }
+    });
+
     // Save button handler
     btnEdit.onclick = function () {
       const htmlCode = htmlViewer.editor?.getValue() || '';
@@ -403,20 +275,74 @@ const Main = () => {
       const bodyContent = doc.body.innerHTML;
 
       editor.setComponents(bodyContent);
-      editor.setStyle(cssCode);
+      editor.setStyle(formatCss(cssCode));
       modal.close();
     };
 
     // Discard button handler
     btnDiscard.onclick = () => modal.close();
 
+    // Add CSS variables to canvas
+    editor.on('load', () => {
+      const frameHead = editor.Canvas.getDocument().head;
+      const styleEl = document.createElement('style');
+      styleEl.innerHTML = baseStyles;
+      frameHead.appendChild(styleEl);
+    });
+
+    // Setup storage handling
+    editor.on('storage:start', () => {
+      // Save content to localStorage before changes
+      const components = editor.getComponents();
+      const styles = editor.getStyle();
+      localStorage.setItem('gjs-components', JSON.stringify(components));
+      localStorage.setItem('gjs-styles', JSON.stringify(styles));
+
+    });
+
+    // Handle content deletion
+    cmdm.add('delete-content', {
+      run: function (editor) {
+        // Clear the editor content
+        editor.Components.clear();
+        editor.setStyle('');
+
+        // Remove from localStorage
+        localStorage.removeItem('gjs-components');
+        localStorage.removeItem('gjs-styles');
+
+        // Clean up empty divs in HTML viewer
+        const cleanHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${document.title || "Grape js"}</title>
+</head>
+<body>
+</body>
+</html>`;
+
+        if (htmlViewer.editor) {
+          htmlViewer.setContent(cleanHtml);
+          htmlViewer.editor.refresh();
+        }
+
+        // Reset CSS viewer
+        if (cssViewer.editor) {
+          cssViewer.setContent(baseStyles);
+          cssViewer.editor.refresh();
+        }
+      }
+    });
+
+
     // HTML Edit Command
     cmdm.add('html-edit', {
       run: function (editor, sender) {
         sender?.set('active', 0);
-        modal.setTitle('Code Editor');
+        modal.setTitle('Code');
 
-        // Initialize viewers if not already done
         if (!htmlViewer.editor) {
           const htmlTextarea = document.createElement('textarea');
           htmlSection.appendChild(htmlTextarea);
@@ -429,44 +355,30 @@ const Main = () => {
           cssViewer.init(cssTextarea);
         }
 
-        // Create full HTML structure
-        const pageTitle = document.title || "Grape js";
-        const bodyContent = editor.getHtml();
+        // Clean up empty divs before showing HTML
+        const bodyContent = editor.getHtml().replace(/<div>\s*<\/div>/g, '');
         const cssContent = editor.getCss();
         const fullHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${pageTitle}</title>
+    <title>${document.title || "Grape js"}</title>
 </head>
 ${bodyContent}
 </html>`;
-        const fullCss = `
-        :root {
-          --background: #ffffff;
-          --foreground: #171717;
-          --primary-color: #007bff;
-          --secondary-color: #6c757d;
-          --font-size: 16px;
-        }
-        
 
-${cssContent}
-`;
+        const fullCss = formatCss(cssContent);
 
-        // Set up modal content
         editorsContainer.replaceChildren(htmlSection, cssSection);
         buttonsContainer.replaceChildren(btnDiscard, btnEdit);
         container.replaceChildren(editorsContainer, buttonsContainer);
         modal.setContent(container);
 
-        // Set content and open modal
         htmlViewer.setContent(fullHtml);
         cssViewer.setContent(fullCss);
         modal.open();
 
-        // Refresh editors
         htmlViewer.editor?.refresh();
         cssViewer.editor?.refresh();
       }
@@ -478,8 +390,37 @@ ${cssContent}
       className: 'fa fa-code',
       command: 'html-edit',
       attributes: { title: 'Code' }
+    },
+    {
+      id: 'clear-content',
+      className: 'fa fa-trash',
+      command: 'delete-content',
+      attributes: { title: 'Clear Content' }
     }]);
+    // Add a clear button to the panel
+    // pnm.addButton('options', [{
+    //   id: 'clear-content',
+    //   className: 'fa fa-trash',
+    //   command: 'delete-content',
+    //   attributes: { title: 'Clear Content' }
+    // }]);
 
+    // Load content from localStorage on editor initialization
+    const loadStoredContent = () => {
+      const storedComponents = localStorage.getItem('gjs-components');
+      const storedStyles = localStorage.getItem('gjs-styles');
+
+      if (storedComponents) {
+        editor.setComponents(JSON.parse(storedComponents));
+      }
+
+      if (storedStyles) {
+        editor.setStyle(JSON.parse(storedStyles));
+      }
+    };
+
+    // Call this after editor initialization
+    loadStoredContent();
     // Remove export template button
     const panelButtons = editor.Panels.getPanel('options')?.get('buttons');
     if (panelButtons) {
@@ -500,6 +441,7 @@ ${cssContent}
 
     return () => editor.destroy();
   }, []);
+
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>

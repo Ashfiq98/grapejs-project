@@ -101,20 +101,22 @@ export const grapeObj = {
             name: 'Background Color',
             property: 'background-color',
             type: 'select',  // Use select for a list of options
-            default: 'var(--primary-color)', // Default value from the CSS variable
+            default: 'var(--background)', // Default value from the CSS variable
             options: [
               { value: 'var(--primary-color)', name: 'Primary Color' },
+              { value: 'var(--secondary-color)', name: 'Secondary Color' },
               { value: '#ff0000', name: 'Red' },
               { value: '#00ff00', name: 'Green' },
-              { value: '#0000ff', name: 'Blue' },
+              { value: '#7F00FF', name: 'Violet' },
             ],
           },
           {
             name: 'Color',
             property: 'color',
             type: 'select', // Use select for a list of options
-            default: 'var(--secondary-color)', // Default value from the CSS variable
+            default: 'var(--foreground)', // Default value from the CSS variable
             options: [
+              { value: 'var(--primary-color)', name: 'Primary Color' },
               { value: 'var(--secondary-color)', name: 'Secondary Color' },
               { value: '#ffcc00', name: 'Yellow' },
               { value: '#cccccc', name: 'Gray' },
