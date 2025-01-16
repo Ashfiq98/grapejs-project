@@ -95,7 +95,7 @@ export const grapeObj = {
       {
         name: 'Global Settings',
         open: true,
-        buildProps: ['background-color', 'color'],
+        buildProps: ['background-color', 'color', 'font-family'],
         properties: [
           {
             name: 'Background Color',
@@ -103,24 +103,21 @@ export const grapeObj = {
             type: 'select',  // Use select for a list of options
             default: 'var(--background)', // Default value from the CSS variable
             options: [
-              { value: 'var(--primary-color)', name: 'Primary Color' },
-              { value: 'var(--secondary-color)', name: 'Secondary Color' },
+              { value: 'var(--primary-color)', name: 'Primary' },
+              { value: 'var(--secondary-color)', name: 'Secondary' },
               { value: '#ff0000', name: 'Red' },
               { value: '#00ff00', name: 'Green' },
               { value: '#7F00FF', name: 'Violet' },
             ],
           },
           {
-            name: 'Color',
-            property: 'color',
+            name: 'Font',
+            property: 'font-family',
             type: 'select', // Use select for a list of options
-            default: 'var(--foreground)', // Default value from the CSS variable
+            default: '..', // Default value 
             options: [
-              { value: 'var(--primary-color)', name: 'Primary Color' },
-              { value: 'var(--secondary-color)', name: 'Secondary Color' },
-              { value: '#ffcc00', name: 'Yellow' },
-              { value: '#cccccc', name: 'Gray' },
-              { value: '#ffffff', name: 'White' },
+              { value: 'var(--global-font)', name: 'Global' },
+              { value: 'var(--secondary-font)', name: 'Secondary' },
             ],
           },
         ],

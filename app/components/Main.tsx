@@ -171,14 +171,18 @@ const Main = () => {
       return;
     }
 
+
     // Define base styles
     const baseStyles = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --primary-color: #007bff;
   --secondary-color: #cc7f28;
   --font-size: 16px;
+  --global-font : "Inter", serif;
+  --secondary-font: "Poppins", serif;
 }
 * {
   box-sizing: border-box;
@@ -186,7 +190,18 @@ const Main = () => {
 body {
   margin: 0;
 }`;
+    const setupCanvasStyles = (editor) => {
+      const frameHead = editor.Canvas.getDocument().head;
+      let canvasStyles = frameHead.querySelector('#canvas-styles');
 
+      if (!canvasStyles) {
+        canvasStyles = document.createElement('style');
+        canvasStyles.id = 'canvas-styles';
+        frameHead.appendChild(canvasStyles);
+      }
+
+      return canvasStyles;
+    };
     // CSS formatting function
     const formatCss = (cssContent) => {
       const cleanCss = cssContent.replace(
@@ -262,6 +277,10 @@ body {
         const formattedCss = formatCss(cssContent);
         cssViewer.setContent(formattedCss);
         cssViewer.editor.refresh();
+
+        // Update canvas styles
+        const canvasStyles = setupCanvasStyles(editor);
+        canvasStyles.innerHTML = formattedCss;
       }
     });
 
@@ -275,10 +294,16 @@ body {
       const bodyContent = doc.body.innerHTML;
 
       editor.setComponents(bodyContent);
-      editor.setStyle(formatCss(cssCode));
+
+      // Update both editor and canvas styles
+      const formattedCss = formatCss(cssCode);
+      editor.setStyle(formattedCss);
+
+      const canvasStyles = setupCanvasStyles(editor);
+      canvasStyles.innerHTML = formattedCss;
+
       modal.close();
     };
-
     // Discard button handler
     btnDiscard.onclick = () => modal.close();
 
@@ -367,7 +392,6 @@ body {
 </head>
 ${bodyContent}
 </html>`;
-
         const fullCss = formatCss(cssContent);
 
         editorsContainer.replaceChildren(htmlSection, cssSection);
@@ -447,10 +471,10 @@ ${bodyContent}
     <div style={{ display: 'flex', height: '100vh' }}>
       <div id="blocks" style={{ width: '200px', padding: '15px', borderRight: '1px solid #ccc' }}></div>
       <div style={{ flex: 1 }}><div id="gjs"></div></div>
-      <div style={{ width: '280px', padding: '15px', borderLeft: '1px solid #ccc' }}>
+      {/* <div style={{ width: '280px', padding: '15px', borderLeft: '1px solid #ccc' }}>
         <div className="layers-container"></div>
         <div className="styles-container"></div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -16,6 +16,10 @@ body {
   overflow-x: hidden;
 }
 
+#gjs-mdl-c>div {
+  overflow: auto;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -73,5 +77,3 @@ a {
   color: #0a0a0a;
 
 }
-
-
